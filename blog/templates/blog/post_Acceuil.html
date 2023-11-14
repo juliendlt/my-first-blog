@@ -1,0 +1,41 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <h1 class="titre">Voitures : </h1>
+    
+    <div class="container text-center">
+        <div class="row align-items-start">
+            {% for carac in Character %}
+            <div class="col">
+                <a href="{% url 'character_detail' id_character=carac.id_character %}" class="Caractere">{{ carac.id_character }}</a>
+                <img src="{%static carac.photo %}" alt="voitues" width="60%" height="60%">
+                <p>{{ carac.lieu }}</p>
+                <p>{{ carac.etat }}</p>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+    <h1 class="titre">Equipement : </h1>
+
+    <div class="container text-center">
+        <div class="row align-items-start">
+            {% for equip in Equipement %}
+            <div class="col">
+
+                    <h2 class="Equipement">{{ equip.id_equip }}</h2>
+                    <img src="{%static equip.photo %}" alt="equipement" width="60%" height="60%">
+                    <p>{{ equip.disponibilite }}</p>
+                
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+{% endblock %}

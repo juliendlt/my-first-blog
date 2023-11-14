@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if message == ''%}
+<div class="detail">
+    <h1>
+        <a href="/">{{ character.id_character }}</a>
+    </h1>
+    <img src="{%static character.photo %}" alt="voiture">
+    <p>{{ character.lieu }}</p>
+    <p>{{ character.etat }}</p>
+    
+    <form method="POST" class="post-form">{% csrf_token %}
+        <b> Changer : </b> {{ form.as_ul }}
+        <button type="submit" class="btn btn-outline-light">OK</button>
+        <a href="{% url 'post_Acceuil' %}">Back</a>
+    </form>
+</div>
+{% endif %}
+
+{% if message != ''%}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+<a href="{% url 'post_Acceuil' %}" id="retour">Back</a>
+{% endif %}
+{% endblock %}
